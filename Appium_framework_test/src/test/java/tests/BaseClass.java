@@ -37,13 +37,13 @@ public class BaseClass extends ERdemo{
 			cap.setCapability(MobileCapabilityType.PLATFORM_NAME, "ANDROID");
 			cap.setCapability(MobileCapabilityType.PLATFORM_VERSION, "11.0.0");
 			cap.setCapability(MobileCapabilityType.DEVICE_NAME, "OnePlus 6T");
-			cap.setCapability(MobileCapabilityType.UDID, "192.168.100.5:5555");
+			cap.setCapability(MobileCapabilityType.UDID, "192.168.100.9:5555");
 //			cap.setCapability(MobileCapabilityType.UDID, "810b9bb6");
 			cap.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT,60); // waiting for a new command from client
 																				// side
 			// cap.setCapability(MobileCapabilityType.APP, "");
 //			cap.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
-			cap.setCapability(MobileCapabilityType.APP, "/Users/wrp/eclipse-workspace/Appium_framework_test/src/test/resources/apps/Sun & Sand Sports Shopping App_2.4.6_Apkpure.apk");
+			cap.setCapability(MobileCapabilityType.APP, "/Users/wrp/git/AppiumAutomation-Android/Appium_framework_test/src/test/resources/apps/Sun & Sand Sports Shopping App_2.4.6_Apkpure.apk");
 			cap.setCapability("unicodeKeyboard", true);
 			cap.setCapability("resetKeyboard", true);
 			

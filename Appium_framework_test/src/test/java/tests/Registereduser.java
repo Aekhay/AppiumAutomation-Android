@@ -1,7 +1,9 @@
 package tests;
 
 import java.time.Duration;
+import java.util.UUID;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
@@ -166,67 +168,91 @@ public class Registereduser extends BaseClass {
 		el14.click();
 		testSSS.log(Status.PASS, "Clicking Checkout Securely from cart");
 		Thread.sleep(5000);
+		
+		//add new shipping address
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		WebElement el15 = driver.findElement(By.xpath("//android.widget.TextView[@text='Add another Shipping Address?']"));
+		el15.click();
+		testSSS.log(Status.PASS, "Clicking Add new shipping address link");
+		
+		
+		// Confirm location permission
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		WebElement el17 = driver.findElement(By.xpath(
+				"/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.Button[2]"));
+		el17.click();
+		testSSS.log(Status.PASS, "Confirming location permission dialogbox");
+//
+		// Pin location
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		WebElement el18 = driver.findElement(By.xpath(
+				"/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat[2]/android.widget.LinearLayout/android.widget.EditText"));
+		el18.click();
+		testSSS.log(Status.PASS, "Starting pinning location");
+//
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		WebElement el18new = driver.findElement(By.xpath(
+				"/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.EditText"));
+		el18new.sendKeys("Al Barsha 1");
+		testSSS.log(Status.PASS, "Searching location");
 
-//		// Confirm location permission
-//		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-//		WebElement el17 = driver.findElement(By.xpath(
-//				"/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.Button[2]"));
-//		el17.click();
-//		testSSS.log(Status.PASS, "Confirming location permission dialogbox");
-//
-//		// Pin location
-//		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-//		WebElement el18 = driver.findElement(By.xpath(
-//				"/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat[2]/android.widget.LinearLayout/android.widget.EditText"));
-//		el18.click();
-//		testSSS.log(Status.PASS, "Starting pinning location");
-//
-//		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-//		WebElement el18new = driver.findElement(By.xpath(
-//				"/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.EditText"));
-//		el18new.sendKeys("Al Barsha 1");
-//		testSSS.log(Status.PASS, "Searching location");
-//
-//		// Select location
-//		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-//		WebElement el19 = driver.findElement(By.xpath(
-//				"/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[1]/android.widget.TextView[1]"));
-//		el19.click();
-//		testSSS.log(Status.PASS, "Selecting searched location from results");
-//
-//		// Confirm location
-//		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-//		WebElement el20 = driver.findElement(By.xpath(
-//				"/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat[1]/android.widget.TextView"));
-//		el20.click();
-//		testSSS.log(Status.PASS, "Clicking on Confirm location button");
-//
-//		// Address form
-//		// Flat
-//		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-//		WebElement el21 = driver.findElement(By.xpath(
-//				"/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.EditText"));
-////		el21.click();
-//		el21.sendKeys("Test flat");
-//		testSSS.log(Status.PASS, "Entering flat field text");
-//
-//		// Building
-//		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-//		WebElement el22 = driver.findElement(By.xpath(
-//				"/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.EditText"));
-////		el22.click();
-//		el22.sendKeys("Test Building");
-//		testSSS.log(Status.PASS, "Entering building field text");
-//
-//		// Landmark
-//		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-//		WebElement el23 = driver.findElement(By.xpath(
-//				"/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[3]/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.EditText"));
-////		el23.click();
-//		el23.sendKeys("Test landmark");
-//		testSSS.log(Status.PASS, "Entering landmark field text");
-//
-//		// Personal info
+		// Select location
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		WebElement el19 = driver.findElement(By.xpath(
+				"/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[1]/android.widget.TextView[1]"));
+		el19.click();
+		testSSS.log(Status.PASS, "Selecting searched location from results");
+
+		// Confirm location
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		WebElement el20 = driver.findElement(By.xpath(
+				"/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/androidx.appcompat.widget.LinearLayoutCompat[1]/android.widget.TextView"));
+		el20.click();
+		testSSS.log(Status.PASS, "Clicking on Confirm location button");
+
+		// Address form
+		// Flat
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		WebElement el21 = driver.findElement(By.xpath(
+				"/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.EditText"));
+//		el21.click();
+		el21.sendKeys("Test flat");
+		testSSS.log(Status.PASS, "Entering flat field text");
+
+		// Building
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		WebElement el22 = driver.findElement(By.xpath(
+				"/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[2]/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.EditText"));
+//		el22.click();
+		el22.sendKeys("Test Building");
+		testSSS.log(Status.PASS, "Entering building field text");
+
+		// Landmark
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		WebElement el23 = driver.findElement(By.xpath(
+				"/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[3]/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.EditText"));
+//		el23.click();
+		el23.sendKeys("Test landmark");
+		testSSS.log(Status.PASS, "Entering landmark field text");
+		
+		// Home
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		WebElement el23home = driver.findElement(By.xpath(
+				"/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup[4]/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.EditText"));
+//		el23.click();
+		
+		String random = RandomStringUtils.randomAlphabetic(3);
+		
+		el23home.sendKeys("Test Home" + random);
+		testSSS.log(Status.PASS, "Entering home field text");
+		
+		//Default Shipping address checkbox
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		WebElement elcheck = driver.findElement(By.xpath("//android.widget.CheckBox[@text='Default Shipping Address']"));
+		elcheck.click();
+		testSSS.log(Status.PASS, "Selecting checkbox default shipping address");
+
+		// Personal info
 //		// Title
 //		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 //		WebElement el24 = driver.findElement(By.xpath(
@@ -254,14 +280,14 @@ public class Registereduser extends BaseClass {
 ////		el27.click();
 //		el27.sendKeys("QA");
 //		testSSS.log(Status.PASS, "Entering lastname field text");
-//
-//		// Swipe down
-//
-//		WebElement element = (WebElement) driver.findElement(
-//				AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true)).setMaxSearchSwipes(10)"
-//						+ ".scrollIntoView(new UiSelector().text(\"Mobile Number*\"))"));
-//		testSSS.log(Status.PASS, "Scrolling down");
-//
+
+		// Swipe down
+
+		WebElement element = (WebElement) driver.findElement(
+				AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true)).setMaxSearchSwipes(10)"
+						+ ".scrollIntoView(new UiSelector().text(\"Mobile Number*\"))"));
+		testSSS.log(Status.PASS, "Scrolling down");
+
 //		// Mobile
 //		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 //		WebElement el28 = driver.findElement(By.xpath(
@@ -269,20 +295,21 @@ public class Registereduser extends BaseClass {
 ////		el28.click();
 //		el28.sendKeys("501254875");
 //		testSSS.log(Status.PASS, "Entering mobile number field text");
-//
-//		// Save address
-//		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-//		WebElement el29 = driver.findElement(By.xpath(
-//				"/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.widget.Button"));
-//		el29.click();
-//		testSSS.log(Status.PASS, "Saving address form");
-//		// OTP
-		// Close card toggle
-//		((JavascriptExecutor) driver).executeScript("mobile: swipeGesture", ImmutableMap.of(
-//			    "left", 200, "top", 200, "width", 200, "height", 200,
-//			    "direction", "down",
-//			    "percent", 0.75
-//			));
+
+		// Save address
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		WebElement el29 = driver.findElement(By.xpath(
+				"/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.widget.Button"));
+		el29.click();
+		testSSS.log(Status.PASS, "Saving address form");
+		// OTP
+		 
+		//Close card toggle
+		((JavascriptExecutor) driver).executeScript("mobile: swipeGesture", ImmutableMap.of(
+			    "left", 200, "top", 200, "width", 200, "height", 200,
+			    "direction", "down",
+			    "percent", 0.75
+			));
 		
 		
 		
